@@ -1,5 +1,6 @@
 import { AppHandler, MetadataCacheHandler } from '../handlers';
 import { Plugin, TFile } from 'obsidian';
+import { AzidSettings } from '../settings';
 
 /**
  * Defines the callbacks that a provider must implement.
@@ -8,7 +9,7 @@ export abstract class Provider {
   protected app: AppHandler;
   protected metadataCache: MetadataCacheHandler;
 
-  constructor(protected plugin: Plugin) {
+  constructor(protected plugin: Plugin, protected settings: AzidSettings) {
     this.app = new AppHandler(this.plugin);
     this.metadataCache = new MetadataCacheHandler(this.plugin);
   }

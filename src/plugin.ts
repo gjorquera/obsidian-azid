@@ -1,12 +1,14 @@
 import { Plugin, TFile } from 'obsidian';
-
+import { AzidSettings } from './settings';
 import * as p from './providers';
 
 export default class AzidPlugin extends Plugin {
+  private settings = new AzidSettings();
+
   private providers: p.Provider[] = [
-    new p.FileExplorerProvider(this),
-    new p.GraphViewProvider(this),
-    new p.NewNoteProvider(this),
+    new p.FileExplorerProvider(this, this.settings),
+    new p.GraphViewProvider(this, this.settings),
+    new p.NewNoteProvider(this, this.settings),
   ];
 
   onload() {

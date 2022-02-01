@@ -10,7 +10,7 @@ import { Provider } from './provider';
 export class GraphViewProvider extends Provider {
   refresh() {
     this.translateGraphView((node) => {
-      return this.metadataCache.getTitle(node.id, false);
+      return this.formatNoteDisplay(node.id);
     });
   }
 
@@ -18,7 +18,7 @@ export class GraphViewProvider extends Provider {
     const graphView = this.getGraphView();
     if (graphView) {
       this.translateFile(graphView, file, (node) => {
-        return this.metadataCache.getTitle(node.id, false);
+        return this.formatNoteDisplay(node.id);
       });
     }
   }
@@ -66,5 +66,12 @@ export class GraphViewProvider extends Provider {
       this.translateNode(node, translator);
       graphView.renderer.onIframeLoad();
     }
+  }
+
+  private formatNoteDisplay(path: string): string {
+    return this.settings.formatNoteDisplay(
+      this.metadataCache.getBasename(path),
+      this.metadataCache.getTitle(path),
+      false);
   }
 }

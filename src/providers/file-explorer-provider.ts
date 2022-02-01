@@ -46,7 +46,11 @@ export class FileExplorerProvider extends Provider {
   }
 
   private toHeading(item: FileItem) {
-    item.titleInnerEl.innerHTML = this.metadataCache.getTitle(item.file.path, true);
+    const path = item.file.path;
+    item.titleInnerEl.innerHTML = this.settings.formatNoteDisplay(
+      this.metadataCache.getBasename(path),
+      this.metadataCache.getTitle(path),
+      true);
   }
 
   private isMarkdownFile(item: AFItem): boolean {
