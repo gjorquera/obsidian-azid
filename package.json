@@ -1,6 +1,6 @@
 {
   "name": "obsidian-azid",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Manage alphanumeric Zettelkasten IDs filenames",
   "main": "main.js",
   "scripts": {
