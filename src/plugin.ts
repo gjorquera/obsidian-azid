@@ -3,7 +3,7 @@ import { AzidSettings } from './settings';
 import * as p from './providers';
 
 export default class AzidPlugin extends Plugin {
-  private settings = new AzidSettings();
+  private settings = new AzidSettings(this);
 
   private providers: p.Provider[] = [
     new p.FileExplorerProvider(this, this.settings),
@@ -11,19 +11,19 @@ export default class AzidPlugin extends Plugin {
     new p.NewNoteProvider(this, this.settings),
   ];
 
-  onload() {
-    // Initialize
+  async onload() {
+    // Load settings
+    await this.settings.load();
+    this.addSettingTab(this.settings);
+
+    // Initialize providers
     this.app.workspace.onLayoutReady(() => {
-      this.providers.forEach((provider: p.Provider) => {
-        provider.refresh();
-      });
+      this.refresh();
     });
 
     // Reguster layout change callbacks
     this.registerEvent(this.app.workspace.on('layout-change', () => {
-      this.providers.forEach((provider: p.Provider) => {
-        provider.refresh();
-      });
+      this.refresh();
     }));
 
     // Register MetadataCache update callbacks
@@ -32,6 +32,12 @@ export default class AzidPlugin extends Plugin {
         provider.refreshFile(file);
       });
     }));
+  }
+
+  refresh() {
+    this.providers.forEach((provider: p.Provider) => {
+      provider.refresh();
+    });
   }
 
   onunload() {

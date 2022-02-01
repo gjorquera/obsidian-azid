@@ -31,14 +31,10 @@ export class NewNoteProvider extends Provider {
 
   private async safeRenameToRandomAzid(file: TFile): Promise<boolean> {
     try {
-      await this.app.renameBasename(file, this.randomAzid());
+      await this.app.renameBasename(file, this.settings.formatNoteAzid());
       return true;
     } catch (err) {
       return false;
     }
-  }
-
-  private randomAzid(): string {
-    return Math.random().toString(36).slice(2, 5);
   }
 }
