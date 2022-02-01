@@ -6,6 +6,7 @@ export default class AzidPlugin extends Plugin {
   private providers: p.Provider[] = [
     new p.FileExplorerProvider(this),
     new p.GraphViewProvider(this),
+    new p.NewNoteProvider(this),
   ];
 
   onload() {

@@ -1,4 +1,5 @@
-import { Plugin, View } from 'obsidian';
+import { Plugin, TFile, View } from 'obsidian';
+import * as path from 'path';
 
 export class AppHandler {
   constructor(private plugin: Plugin) {
@@ -18,5 +19,11 @@ export class AppHandler {
       }
     }
     return null;
+  }
+
+  async renameBasename(file: TFile, newBasename: string) {
+    const dirname = path.dirname(file.path);
+    const newPath = path.join(dirname, `${newBasename}.${file.extension}`);
+    await this.plugin.app.vault.rename(file, newPath);
   }
 }
