@@ -34,4 +34,25 @@ declare module 'obsidian' {
   export interface FolderItem {
     file: TFolder;
   }
+
+  // GraphView
+
+  export class GraphView extends View  {
+    renderer: GVRenderer;
+    getViewType(): string;
+    getDisplayText(): string;
+  }
+
+  export interface GVRenderer {
+    nodes: GVNode[];
+    nodeLookup: { [key: string]: GVNode };
+    onIframeLoad(): void;
+  }
+
+  export interface GVNode {
+    id: string;
+    didSetTitle: boolean;
+    getDisplayText: () => string;
+    initGraphics(): void;
+  }
 }
