@@ -48,22 +48,21 @@ Obsidian Azid works right out of the box. No new commands and no new panels.
 
 After you activate Obsidian Azid, you'll notice that:
 
-1. Creating new notes automatically get a new azid:
+1. Your File Explorer now shows note titles and azids:
 
-TODO Add gif.
+![file-explorer](images/file-explorer.gif)
 
-2. Your File Explorer now shows note titles and azids:
+2. The Graph View also shows note titles and azids:
 
-TODO Add gif.
+![graph-view](images/graph-view.gif)
 
-3. The Graph View also shows note titles and azids:
+3. Updating the notes' titles is reflected in the File Explorer and Graph View:
 
-TODO Add gif.
+![new-title](images/new-title.gif)
 
-4. And, of course, updating the notes' titles is reflected in the File Explorer
-   and Graph View:
+4. And, creating new notes automatically get a new azid:
 
-TODO Add gif.
+![new-azid](images/new-azid.gif)
 
 ## License
 
