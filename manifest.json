@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-azid",
+  "name": "Azid",
+  "version": "0.0.1",
+  "minAppVersion": "0.12.11",
+  "description": "Manage alphanumeric Zettelkasten IDs filenames",
+  "author": "Gaston Jorquera",
+  "authorUrl": "https://github.com/gjorquera/obsidian-azid",
+  "isDesktopOnly": false
+}
